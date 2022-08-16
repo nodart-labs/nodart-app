@@ -8,6 +8,8 @@ export class Sample3Controller extends Controller {
 
     hello() {
         console.log('hello action called')
+        console.log('current route data:', this.route.data)
+        console.log('current request headers:', this.http.request.headers)
     }
 
     delete(): any {
