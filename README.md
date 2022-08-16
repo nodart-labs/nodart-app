@@ -17,8 +17,9 @@ run routes:
 
 http://localhost:3000/sample
 http://localhost:3000/foo/1
+http://localhost:3000/sub/sample3/hello
 
-and watch console...
+and watch terminal...
 
 ```
 
