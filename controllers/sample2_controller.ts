@@ -1,4 +1,4 @@
-import {Controller} from 'nodart'
+import {Controller} from "nodart";
 
 export class Sample2Controller extends Controller {
 
@@ -10,7 +10,17 @@ export class Sample2Controller extends Controller {
     }
 
     get(foo, id): any {
-        console.log('http route arguments: ', {foo, id})
+
+        /*
+        * Response JSON:
+        * this.send.data({foo, id})
+        * */
+
+        this.send.view('index', {
+            title: 'Sample2',
+            message: 'This arguments has been passed into controller action by parsing HTTP route',
+            args: {foo, id}
+        })
     }
 
     head(): any {

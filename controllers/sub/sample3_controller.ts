@@ -1,4 +1,4 @@
-import {Controller} from 'nodart'
+import {Controller} from "nodart";
 
 export class Sample3Controller extends Controller {
 
@@ -10,6 +10,11 @@ export class Sample3Controller extends Controller {
         console.log('hello action called')
         console.log('current route data:', this.route.data)
         console.log('current request headers:', this.http.request.headers)
+
+        this.send.view('index', {
+            title: 'Sample3',
+            message: 'This controller action has been called manually from HTTP route'
+        })
     }
 
     delete(): any {

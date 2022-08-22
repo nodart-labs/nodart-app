@@ -1,4 +1,4 @@
-import {Controller} from 'nodart'
+import {Controller} from "nodart";
 
 export class SampleController extends Controller {
 
@@ -14,6 +14,11 @@ export class SampleController extends Controller {
     }
 
     get(): any {
+        this.send.view('index', {
+            title: 'Sample',
+            message: `This template has been parsed by template engine. See Docs: 
+            <a href="https://mozilla.github.io/nunjucks/api.html" target="_blank">https://mozilla.github.io/nunjucks/api.html</a>`
+        })
     }
 
     head(): any {

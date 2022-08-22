@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>
+    {{message|safe}}
+</h2>
+
+{% if args %}
+<code>
+    {{args | dump}}
+</code>
+{% endif %}
+
+{% endblock %}
