@@ -1,4 +1,6 @@
-export = {
+import {typeRoute} from "nodart";
+
+export = <typeRoute>{
     index: [
         {
             name: 'index',

@@ -6,9 +6,6 @@ export class Sample2Controller extends Controller {
         console.log('sample2 controller called')
     }
 
-    delete(): any {
-    }
-
     get(foo, id): any {
 
         /*
@@ -33,5 +30,8 @@ export class Sample2Controller extends Controller {
     }
 
     put(): any {
+    }
+
+    delete(): any {
     }
 }
