@@ -45,11 +45,6 @@ node cmd [command name] [command action (optional)] --[argument name (optional)]
 
 ---
 
-### Create App:
-```
-npx nodart create-app
-```
-
 
 ### APPLICATION START EXAMPLE
 
