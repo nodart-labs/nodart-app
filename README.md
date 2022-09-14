@@ -1,6 +1,6 @@
 ## "NODART" FRAMEWORK SAMPLE APPLICATION
 
----
+
 
 ### INSTALL APPLICATION
 
@@ -19,6 +19,7 @@ creates base application structure with some usage examples.
 
 ---
 
+
 ### RUN UNDER DEVELOPMENT SERVER
 ```
 npm run dev
@@ -30,6 +31,7 @@ npm run start
 ```
 
 ---
+
 
 ### COMMAND LINE INTERFACE
 
