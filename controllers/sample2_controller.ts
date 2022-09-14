@@ -7,12 +7,6 @@ export class Sample2Controller extends Controller {
     }
 
     get(foo, id): any {
-
-        /*
-        * Response JSON:
-        * this.send.data({foo, id})
-        * */
-
         this.send.view('index', {
             title: 'Sample2',
             message: 'This arguments has been passed into controller action by parsing HTTP route',

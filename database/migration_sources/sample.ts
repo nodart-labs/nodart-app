@@ -1,8 +1,8 @@
-import {OrmMigrationInterface, OrmMigrationSource} from "nodart";
+import {nodart, OrmMigrationSource} from "nodart";
 
 export class SampleMigration extends OrmMigrationSource {
 
-    readonly migrations = <OrmMigrationInterface>{
+    readonly migrations = <nodart.orm.OrmMigrationInterface>{
         users: {
             up(client) {
                 return client.schema

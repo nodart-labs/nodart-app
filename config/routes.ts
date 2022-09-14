@@ -1,6 +1,6 @@
-import {typeRoute} from "nodart";
+import {nodart} from "nodart";
 
-export = <typeRoute>{
+export = <nodart.router.RouteEntry>{
     index: [
         {
             name: 'index',
@@ -9,6 +9,6 @@ export = <typeRoute>{
     ],
     sample: 'sample',
     sample2: [
-        '/:foo?/:+id'
+        '/:foo/:+id?'
     ]
 }

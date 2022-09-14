@@ -1,4 +1,4 @@
-import {Controller} from "nodart";
+import {Controller, HttpException, RuntimeException} from "nodart";
 import {SampleModel} from "../models/sub/sample";
 import {SampleService} from "../services/sample";
 
@@ -47,6 +47,26 @@ export class SampleController extends Controller {
         console.log('Model test status:', await service.testModel())
 
         console.log('-----------')
+
+        /*
+        TESTING EXCEPTIONS:
+
+        throw new HttpException(this.http.getHttpResponse({status: 500, content: {html: 'SOME ERROR OCCURRED...'}}))
+        throw new RuntimeException('SOME ERROR OCCURRED...')
+        */
+
+        /*
+        TESTING RESPONSE JSON:
+
+        this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
+        * */
+
+        /*
+        TESTING FILE SEND:
+
+        this.http.sendFile('/path/to/file.ext')
+        * */
+
     }
 
     get(): any {

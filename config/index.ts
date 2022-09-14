@@ -1,12 +1,10 @@
-import {typeAppConfig} from "nodart";
+import {nodart} from "nodart";
 
 const orm = require('./database')
 const routes = require('./routes')
 
-const _path = require('path')
-
-export = <typeAppConfig>Object.freeze({
-    rootDir: _path.resolve(__dirname, '..'),
+export = <nodart.app.AppConfigInterface>Object.freeze({
+    rootDir: require('path').resolve(__dirname, '..'),
     /**
      * See session supporting docs: https://github.com/mozilla/node-client-sessions
      */

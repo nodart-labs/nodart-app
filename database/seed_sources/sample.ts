@@ -1,8 +1,8 @@
-import {OrmSeedInterface, OrmSeedSource} from "nodart";
+import {nodart, OrmSeedSource} from "nodart";
 
 export class SampleSeed extends OrmSeedSource {
 
-    readonly seeds = <OrmSeedInterface>{
+    readonly seeds = <nodart.orm.OrmSeedInterface>{
         users: (client) => {
             return client('users').truncate()
                 .then(function () {
