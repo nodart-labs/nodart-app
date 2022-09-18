@@ -48,24 +48,22 @@ export class SampleController extends Controller {
 
         console.log('-----------')
 
-        /*
-        TESTING EXCEPTIONS:
+        // TESTING EXCEPTIONS:
+        // throwing HTTP exception, message will be sent to user
+        // throw new HttpException(this.http.getHttpResponse({status: 500, content: {html: 'SOME ERROR OCCURRED...'}}))
+        // or
+        // throw new HttpException('SOME ERROR OCCURRED...', {status: 500, contentType: 'text/html'})
+        // or
+        // throw new HttpException({myResponseJson: 'SOME ERROR OCCURRED'})
 
-        throw new HttpException(this.http.getHttpResponse({status: 500, content: {html: 'SOME ERROR OCCURRED...'}}))
-        throw new RuntimeException('SOME ERROR OCCURRED...')
-        */
+        // throwing regular exception, message will not be sent to user, but shown in server logs.
+        // throw new RuntimeException('SOME ERROR OCCURRED...')
 
-        /*
-        TESTING RESPONSE JSON:
+        // TESTING RESPONSE JSON:
+        // this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
 
-        this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
-        * */
-
-        /*
-        TESTING FILE SEND:
-
-        this.http.sendFile('/path/to/file.ext')
-        * */
+        // TESTING FILE SEND:
+        // this.http.sendFile('/path/to/file.ext')
 
     }
 
