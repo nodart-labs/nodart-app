@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "start": "node index.ts",
+    "start": "node --loader ts-node/esm index.ts",
     "dev": "nodemon index.ts",
     "test": "tests"
   },
   "dependencies": {
-    "nodart": "^3.0.3",
+    "nodart": "^3.1.0",
     "ts-node": "^10.8.0"
   },
   "devDependencies": {
