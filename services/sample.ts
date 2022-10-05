@@ -1,12 +1,6 @@
 import {Service} from "nodart";
-import {SampleController} from "../controllers/sample_controller";
 
 export class SampleService extends Service {
-
-    get controller() {
-
-        return this.scope.controller as SampleController
-    }
 
     get orm() {
 
@@ -38,9 +32,7 @@ export class SampleService extends Service {
 
     async testModel() {
 
-        const model = this.controller.model.sub.sample
-
-        return model.test()
+        return this.scope.model.sub.sample.test()
     }
 
 }

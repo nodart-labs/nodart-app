@@ -73,6 +73,12 @@ export class SampleController extends Controller {
             message: `This page has been parsed by template engine. See Docs: 
             <a href="https://mozilla.github.io/nunjucks/api.html" target="_blank">https://mozilla.github.io/nunjucks/api.html</a>`
         })
+
+        // or
+        // return {SOME_JSON: VALUE}
+
+        // or
+        // return 'SOME_STRING'
     }
 
     head(): any {

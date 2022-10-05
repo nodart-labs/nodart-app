@@ -11,11 +11,12 @@ import {nodart} from "nodart";
  2. As an array of objects - descriptors or strings
 
  Examples:
+
  1. Passing a route as a string (URL pathname):
 
  export = {
-      sample: 'route/to/sample/controller/:someArgumentNameAndValue/:+id?'
-   }
+          sample: 'route/to/sample/controller/:someArgumentNameAndValue/:+id?'
+       }
 
  :+id? - This parameter passes the number "id" to the controller's action as an argument.
 
@@ -24,28 +25,30 @@ import {nodart} from "nodart";
  + - converts value to a number
  ? - describes optional argument (means that it could be existed or not)
 
- 2. As an array of objects - descriptors or strings
+ 2. Passing a route as an array of objects - descriptors or strings
 
- export = {
-      sample: [
-         'route/to/sample/controller/:someArgumentNameAndValue/:+id?',
-         {
-             path: string,
-             name?: string,
-             action?: string,
-             types?: {
-                 [paramName: string]: typeof Number | RegExp | ((value: any) => any)
-             },
-         }
-      ]
-   }
-
- The descriptor object allows you to specify the name of the route, the controller's action method,
+ The descriptor object allows you to specify the name of the route,
+ the controller class and its action method,
  and the regular expression or type and function that would be applied to the argument value.
 
- ------------------
+ export = {
+          sample: [
+             'route/to/sample/controller/:someArgumentNameAndValue/:+id?',
+             {
+                 path: string,
+                 name?: string,
+                 action?: string,
+                 controller?: (route: RouteData) => typeof Controller,
+                 types?: {
+                     [paramName: string]: typeof Number | RegExp | ((value: any) => any)
+                 },
+             }
+          ]
+       }
 
- Besides all You can manually call the controller by HTTP route without specifying it in the configuration.
+ ---------------------------------------------------------------------------------------------------------
+
+ Additionally, you don't need to specify the controller's HTTP route in the setup; you can directly call it.
 
  Just call: http://url/controller_name/action and You will get it.
 

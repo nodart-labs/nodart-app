@@ -1,18 +1,23 @@
-## "NODART" FRAMEWORK SAMPLE APPLICATION
+
+## "NODART" FRAMEWORK: SAMPLE APPLICATION
 
 ### INSTALL APPLICATION
 
 ### 1. GIT
+
+it downloads the current framework version's application with full usage examples.
+
 ```
 git clone https://github.com/nodart-labs/nodart-app.git
 ```
-downloads current version's application with full usage examples.
 
 ### 2. CLI
+
+it creates a base application structure with some usage examples.
+
 ```
 npx nodart create-app
 ```
-creates base application structure with some usage examples.
 
 ---
 

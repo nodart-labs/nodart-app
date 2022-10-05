@@ -13,7 +13,7 @@ export class Sample3Controller extends Controller {
 
         this.send.view('index', {
             title: 'Sample3',
-            message: 'This controller action has been called manually from HTTP route'
+            message: 'This controller action has been called directly from HTTP route'
         })
     }
 
