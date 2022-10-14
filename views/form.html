@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>
+    Sample Form
+</h2>
+
+<form class="form-data" action="" method="POST" enctype="multipart/form-data">
+
+    <p>
+        <label for="name">Your Name</label>
+        <input id="name" name="name" type="text">
+    </p>
+
+    <p>
+        <label for="photos">Photos</label>
+        <input id="photos" name="photos" type="file" multiple>
+    </p>
+
+    <p>
+        <button type="submit">Send</button>
+        <button onclick="sendForm(); return false">Send as JSON</button>
+    </p>
+
+</form>
+
+<script>
+function sendForm() {
+    fetch('/form-data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+            name: document.querySelector('#name').value,
+            photos: document.querySelector('#photos').value,
+        })
+    })
+}
+</script>
+
+<style>
+.form-data {
+    margin: 20px;
+}
+.form-data input {
+    max-width: 200px;
+}
+</style>
+
+{% endblock %}

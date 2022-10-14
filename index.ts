@@ -92,4 +92,29 @@ new App({...config}).init().then(app => {
 
     })
 
+    http.get('/form-data', ({respond}) => {
+
+        respond.send.view('form')
+
+    })
+
+    // processing request json and multipart/form-data
+
+    http.post('/form-data', async ({http}) => {
+
+        const data = http.isFormData
+            ? await http.form.fetchFormData().then(form => {
+                const {fields, files} = form
+                return {fields, files}
+            })
+            : http.data
+
+        console.log(data)
+
+        if (http.isFormData) return {fields: data.fields, files: data.files}
+
+        return data
+
+    })
+
 })
