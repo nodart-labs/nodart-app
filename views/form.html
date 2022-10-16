@@ -19,6 +19,31 @@
     </p>
 
     <p>
+        <label for="checkbox1">Checkbox 1</label>
+        <input id="checkbox1" name="checkbox" type="checkbox" value="1">
+    </p>
+
+    <p>
+        <label for="checkbox2">Checkbox 2</label>
+        <input id="checkbox2" name="checkbox" type="checkbox" value="2">
+    </p>
+
+    <p>
+        <label for="select">Select</label>
+        <select name="select" id="select">
+            <option></option>
+            <option value="1">option-1</option>
+            <option value="2">option-2</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="radio1">Radio</label>
+        <input id="radio1" name="radio" type="radio" value="1">
+        <input id="radio2" name="radio" type="radio" value="2">
+    </p>
+
+    <p>
         <button type="submit">Send</button>
         <button onclick="sendForm(); return false">Send as JSON</button>
     </p>
@@ -27,6 +52,9 @@
 
 <script>
 function sendForm() {
+    const checkbox = []
+    document.querySelectorAll('[name="checkbox"]:checked').forEach(el => checkbox.push(el.value))
+
     fetch('/form-data', {
         method: 'POST',
         headers: {
@@ -36,6 +64,9 @@ function sendForm() {
         body: JSON.stringify({
             name: document.querySelector('#name').value,
             photos: document.querySelector('#photos').value,
+            checkbox,
+            select: document.querySelector('#select').value,
+            radio: document.querySelector('[name="radio"]:checked').value,
         })
     })
 }
