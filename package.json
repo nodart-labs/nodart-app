@@ -5,7 +5,7 @@
     "test": "tests"
   },
   "dependencies": {
-    "nodart": "^4.0.1",
+    "nodart": "^4.0.2",
     "ts-node": "^10.8.0"
   },
   "devDependencies": {
