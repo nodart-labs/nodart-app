@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2>
+    Sample Form
+</h2>
+
+<form class="form-data" action="" method="POST" enctype="multipart/form-data">
+
+    <p>
+        <label for="input">Input</label>
+        <input id="input" name="input" type="text">
+    </p>
+
+    <p>
+        <label for="textarea">Textarea</label>
+        <textarea id="textarea" name="textarea"></textarea>
+    </p>
+
+    <p>
+        <label for="files">Files</label>
+        <input id="files" name="files" type="file" multiple>
+    </p>
+
+    <p>
+        <label for="checkbox1">Checkbox 1</label>
+        <input id="checkbox1" name="checkbox" type="checkbox" value="1">
+    </p>
+
+    <p>
+        <label for="checkbox2">Checkbox 2</label>
+        <input id="checkbox2" name="checkbox" type="checkbox" value="2">
+    </p>
+
+    <p>
+        <label for="select">Select</label>
+        <select name="select" id="select">
+            <option></option>
+            <option value="1">option-1</option>
+            <option value="2">option-2</option>
+        </select>
+    </p>
+
+    <p>
+        <label for="radio1">Radio</label>
+        <input id="radio1" name="radio" type="radio" value="1">
+        <input id="radio2" name="radio" type="radio" value="2">
+    </p>
+
+    <p>
+        <button type="submit">Send</button>
+        <button onclick="sendForm(); return false">Send as JSON</button>
+    </p>
+
+</form>
+
+<script>
+    function sendForm() {
+        const checkbox = []
+        document.querySelectorAll('[name="checkbox"]:checked').forEach(el => checkbox.push(el.value))
+
+        fetch('/form-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify({
+                input: document.querySelector('#input').value,
+                textarea: document.querySelector('#textarea').value,
+                files: document.querySelector('#files').value,
+                checkbox,
+                select: document.querySelector('#select').value,
+                radio: document.querySelector('[name="radio"]:checked').value,
+            })
+        })
+    }
+</script>
+
+<style>
+    .form-data {
+        margin: 20px;
+    }
+    .form-data input {
+        max-width: 200px;
+    }
+</style>
+
+{% endblock %}

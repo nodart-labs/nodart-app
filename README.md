@@ -1,7 +1,14 @@
+<h3 align="center">NodArt - The Art of Node.js.</h3>
+<h3 align="center">A complete framework
+<br/>
+for creating microservices and
+<br/>
+large-scale server-side applications for businesses
+</h3>
 
-## "NODART" FRAMEWORK
+---
 
-### INSTALL APPLICATION
+### INSTALLATION
 
 ### System requirements:
 
@@ -30,12 +37,12 @@ npx nodart microapp --js[optional]
 
 ---
 
-### RUN UNDER DEVELOPMENT SERVER
+### RUNNING UNDER DEVELOPMENT SERVER
 ```shell
 npm run dev
 ```
 
-### RUN UNDER PRODUCTION
+### RUNNING UNDER PRODUCTION
 ```shell
 npm run start
 ```

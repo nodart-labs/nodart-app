@@ -4,7 +4,7 @@ export class SampleService extends Service {
 
     get orm() {
 
-        return this.scope.app.db.orm // or this.scope.app.get('orm').call() as Orm
+        return this.scope.app.service.db.orm // or this.scope.app.get('orm').call() as Orm
     }
 
     test() {
@@ -32,7 +32,7 @@ export class SampleService extends Service {
 
     async testModel() {
 
-        return this.scope.model.sub.sample.test()
+        return this.scope.model().sub.sample.test()
     }
 
 }

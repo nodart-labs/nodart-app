@@ -1,12 +1,12 @@
 import {App} from 'nodart'
-import {SampleService} from "./services/sample"
-import {SampleController} from "./controllers/sample_controller";
+import {SampleService} from "./src/services/sample"
+import {SampleController} from "./src/controllers/sample_controller";
 
-const config = require('./config')
+const config = require('./src/config')
 
-new App({...config}).init().then(app => {
+new App({...config}).init().then(async (app) => {
 
-    app.serve(3000, 'http', '127.0.0.1')
+    await app.serve(3000, 'http', '127.0.0.1')
 
     /*******************************************************************************************
      HTTP SERVICE (since version: 3.2.0):
@@ -17,7 +17,7 @@ new App({...config}).init().then(app => {
      EXAMPLE:
      ********************************************************************************************/
 
-    const http = app.service.http()
+    const http = app.service.http
 
     /**
      * @param route: string | nodart.router.RouteDescriptor -> {
@@ -31,23 +31,21 @@ new App({...config}).init().then(app => {
      *     [addon: string]: any
      * }
      *
-     * @param callback: nodart.service.HttpServiceRouteCallback -> (scope: nodart.service.HttpServiceScope) => Promise<any> | any
+     * @param callback: nodart.service.HttpServiceCallback -> (scope: nodart.service.ServiceScope) => Promise<any> | any
      */
 
     http.get({path: '/sample-http-service/:+id?', controller: () => SampleController}, ({
         app,
         http,
-        session,
         route,
         model,
         service,
-        respond,
         controller
     }) => {
 
-        const sampleController = controller as SampleController
+        const sampleController = controller() as SampleController
 
-        const sampleService = service.sample as SampleService
+        const sampleService = service().sample as SampleService
 
         console.log('----------------------------')
 
@@ -71,9 +69,9 @@ new App({...config}).init().then(app => {
 
         console.log('----------------------------')
 
-        console.log('current URL data:', http.parseURL)
+        console.log('current URL data:', http.url)
 
-        respond.send.view('index', {
+        http.respond.view('index', {
             title: 'Sample Http Service',
             code:
                 '\r\n'
@@ -92,9 +90,9 @@ new App({...config}).init().then(app => {
 
     })
 
-    http.get('/form-data', ({respond}) => {
+    http.get('/form-data', ({http}) => {
 
-        respond.send.view('form')
+        http.respond.view('form')
 
     })
 

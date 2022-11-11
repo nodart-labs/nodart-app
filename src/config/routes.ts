@@ -15,8 +15,8 @@ import {nodart} from "nodart";
  1. Passing a route as a string (URL pathname):
 
  export = {
-          sample: 'route/to/sample/controller/:someArgumentNameAndValue/:+id?'
-       }
+   sample: 'route/to/sample/controller/:someArgumentNameAndValue/:+id?'
+ }
 
  :+id? - This parameter passes the number "id" to the controller's action as an argument.
 
@@ -32,19 +32,19 @@ import {nodart} from "nodart";
  and the regular expression or type and function that would be applied to the argument value.
 
  export = {
-          sample: [
-             'route/to/sample/controller/:someArgumentNameAndValue/:+id?',
-             {
-                 path: string,
-                 name?: string,
-                 action?: string,
-                 controller?: (route: RouteData) => typeof Controller,
-                 types?: {
-                     [paramName: string]: typeof Number | RegExp | ((value: any) => any)
-                 },
-             }
-          ]
-       }
+  sample: [
+     'route/to/sample/controller/:someArgumentNameAndValue/:+id?',
+     {
+         path: string,
+         name?: string,
+         action?: string,
+         controller?: (route: RouteData) => typeof Controller,
+         types?: {
+             [paramName: string]: typeof Number | RegExp | ((value: any) => any)
+         },
+     }
+  ]
+}
 
  ---------------------------------------------------------------------------------------------------------
 

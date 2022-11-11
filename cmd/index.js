@@ -4,9 +4,10 @@ const {App} = require('nodart')
 
 const app = new App({
 
+    rootDir: require('path').resolve(__dirname, '../src'),
+
     // INSERT YOUR APPLICATION's CONFIGURATION IN HERE
 
-    rootDir: process.cwd()
 })
 
 const cmd = app.get('cmd').call()
@@ -30,10 +31,10 @@ const cmd = app.get('cmd').call()
  The CLI only recognizes ES modules, therefore you must build up and transform all the files to ES modules.
  In this situation, the system method "buildApp" is useful.
 
+ example of call: cmd.system.buildApp(app)
+
  (Try using "node —loader ts-node/esm cmd..." or something else to specify the interpreter.
  This scenario wasn't put into practice and tested.)
-
- example of call: cmd.system.buildApp(app)
 
  this method executes synchronously and sets the "rootDir" configuration option as the path to the project's build folder.
 

@@ -56,18 +56,19 @@ export class SampleController extends Controller {
         // or
         // throw new HttpException({myResponseJson: 'SOME ERROR OCCURRED'})
 
-        // throwing regular exception, message will not be sent to user, but shown in server logs.
+        // throwing regular exception, message will be not sent to user, but shown in server logs.
         // throw new RuntimeException('SOME ERROR OCCURRED...')
 
         // TESTING RESPONSE JSON:
         // this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
 
         // TESTING FILE SEND:
-        // this.http.sendFile('/path/to/file.ext')
+        // this.http.sendFile('abs/path/to/file.ext')
 
     }
 
     get(): any {
+
         this.send.view('index', {
             title: 'Sample',
             message: `This page has been parsed by template engine. See Docs: 
@@ -79,9 +80,6 @@ export class SampleController extends Controller {
 
         // or
         // return 'SOME_STRING'
-    }
-
-    head(): any {
     }
 
     patch(): any {

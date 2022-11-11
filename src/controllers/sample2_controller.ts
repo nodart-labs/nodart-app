@@ -14,9 +14,6 @@ export class Sample2Controller extends Controller {
         })
     }
 
-    head(): any {
-    }
-
     patch(): any {
     }
 
