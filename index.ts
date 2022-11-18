@@ -69,7 +69,7 @@ new App({...config}).init().then(async (app) => {
 
         console.log('----------------------------')
 
-        console.log('current URL data:', http.url)
+        console.log('current host data:', http.host)
 
         http.respond.view('index', {
             title: 'Sample Http Service',
