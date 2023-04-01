@@ -1,20 +1,17 @@
-import {Model} from "nodart";
+import { Model } from "nodart";
 
 export class SampleModel extends Model {
+  async test() {
+    await this.orm.seeder().source("sample").run();
 
-    async test() {
+    const users = await this.query.select().table("users");
 
-        await this.orm.seeder().source('sample').run()
+    console.log("Database Users:", users);
 
-        const users = await this.query.select().table('users')
+    const migrator = this.orm.migrator();
 
-        console.log('Database Users:', users)
+    await migrator.source("sample", ["users"]).down();
 
-        const migrator = this.orm.migrator()
-
-        await migrator.source('sample', ['users']).down()
-
-        return 'OK'
-    }
-
+    return "OK";
+  }
 }

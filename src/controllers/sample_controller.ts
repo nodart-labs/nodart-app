@@ -1,96 +1,88 @@
-import {Controller, HttpException, RuntimeException} from "nodart";
-import {SampleModel} from "../models/sub/sample";
-import {SampleService} from "../services/sample";
+import { Controller, HttpException, RuntimeException } from "nodart";
+import { SampleModel } from "../models/sub/sample";
+import { SampleService } from "../services/sample";
 
 export class SampleController extends Controller {
+  model = {
+    sub: {
+      sample: {} as SampleModel,
+    },
+  };
 
-    model = {
-        sub: {
-            sample: {} as SampleModel
-        }
-    }
+  service = {
+    sample: {} as SampleService,
+  };
 
-    service = {
-        sample: {} as SampleService
-    }
+  async init() {
+    console.log("Sample controller called");
 
-    async init() {
+    console.log("-----------");
 
-        console.log('Sample controller called')
+    console.log("Testing session:");
 
-        console.log('-----------')
+    this.session.set({ test: "OK" });
 
-        console.log('Testing session:')
+    console.log("Session test status:", this.session.get.test);
 
-        this.session.set({test: 'OK'})
+    console.log("-----------");
 
-        console.log('Session test status:', this.session.get.test)
+    console.log("Testing Service:");
 
-        console.log('-----------')
+    const service = this.service.sample;
 
-        console.log('Testing Service:')
+    console.log("Service test status:", service.test());
 
-        const service = this.service.sample
+    console.log("-----------");
 
-        console.log('Service test status:', service.test())
+    console.log("Testing Migrations:");
 
-        console.log('-----------')
+    console.log("Migrations test status:", await service.testMigration());
 
-        console.log('Testing Migrations:')
+    console.log("-----------");
 
-        console.log('Migrations test status:', await service.testMigration())
+    console.log("Testing Model:");
 
-        console.log('-----------')
+    console.log("Model test status:", await service.testModel());
 
-        console.log('Testing Model:')
+    console.log("-----------");
 
-        console.log('Model test status:', await service.testModel())
+    // TESTING EXCEPTIONS:
+    // throwing HTTP exception, message will be sent to user
+    // throw new HttpException(this.http.getHttpResponse({status: 500, content: {html: 'SOME ERROR OCCURRED...'}}))
+    // or
+    // throw new HttpException('SOME ERROR OCCURRED...', {status: 500, contentType: 'text/html'})
+    // or
+    // throw new HttpException({myResponseJson: 'SOME ERROR OCCURRED'})
 
-        console.log('-----------')
+    // throwing regular exception, message will be not sent to user, but shown in server logs.
+    // throw new RuntimeException('SOME ERROR OCCURRED...')
 
-        // TESTING EXCEPTIONS:
-        // throwing HTTP exception, message will be sent to user
-        // throw new HttpException(this.http.getHttpResponse({status: 500, content: {html: 'SOME ERROR OCCURRED...'}}))
-        // or
-        // throw new HttpException('SOME ERROR OCCURRED...', {status: 500, contentType: 'text/html'})
-        // or
-        // throw new HttpException({myResponseJson: 'SOME ERROR OCCURRED'})
+    // TESTING RESPONSE JSON:
+    // this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
 
-        // throwing regular exception, message will be not sent to user, but shown in server logs.
-        // throw new RuntimeException('SOME ERROR OCCURRED...')
+    // TESTING FILE SEND:
+    // this.http.sendFile('abs/path/to/file.ext')
+  }
 
-        // TESTING RESPONSE JSON:
-        // this.send.data({someKey: someValue}) // Or you may pass string argument if prefer
+  get(): any {
+    this.send.view("index", {
+      title: "Sample",
+      message: `This page has been parsed by template engine. See Docs: 
+            <a href="https://mozilla.github.io/nunjucks/api.html" target="_blank">https://mozilla.github.io/nunjucks/api.html</a>`,
+    });
 
-        // TESTING FILE SEND:
-        // this.http.sendFile('abs/path/to/file.ext')
+    // or
+    // return {SOME_JSON: VALUE}
 
-    }
+    // or
+    // return 'SOME_STRING'
+  }
 
-    get(): any {
+  patch(): any {}
 
-        this.send.view('index', {
-            title: 'Sample',
-            message: `This page has been parsed by template engine. See Docs: 
-            <a href="https://mozilla.github.io/nunjucks/api.html" target="_blank">https://mozilla.github.io/nunjucks/api.html</a>`
-        })
+  post(): any {}
 
-        // or
-        // return {SOME_JSON: VALUE}
+  put(): any {}
 
-        // or
-        // return 'SOME_STRING'
-    }
-
-    patch(): any {
-    }
-
-    post(): any {
-    }
-
-    put(): any {
-    }
-
-    delete(): any {
-    }
+  delete(): any {}
 }

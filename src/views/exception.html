@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{{response.status}}</title>
-</head>
-<body style="text-align: center">
-<h1>{{response.status}}</h1>
-<h2>{{response.content}}</h2>
-<h2>{{response.request.url}}</h2>
-<h2>{{response.response.getHeaderNames() | dump}}</h2>
-</body>
+  </head>
+  <body style="text-align: center">
+    <h1>{{response.status}}</h1>
+    <h2>{{response.content}}</h2>
+    <h2>{{response.request.url}}</h2>
+    <h2>{{response.response.getHeaderNames() | dump}}</h2>
+  </body>
 </html>

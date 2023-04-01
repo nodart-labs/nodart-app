@@ -1,4 +1,4 @@
-import {nodart} from "nodart";
+import { nodart } from "nodart";
 
 /************************************************************************************************
 
@@ -55,14 +55,12 @@ import {nodart} from "nodart";
  ***********************************************************************************************************/
 
 export = <nodart.router.RouteEntry>{
-    index: [
-        {
-            name: 'index',
-            path: '/',
-        }
-    ],
-    sample: 'sample',
-    sample2: [
-        '/:foo/:+id?'
-    ]
-}
+  index: [
+    {
+      name: "index",
+      path: "/",
+    },
+  ],
+  sample: "sample",
+  sample2: ["/:foo/:+id?"],
+};

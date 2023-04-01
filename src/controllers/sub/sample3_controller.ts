@@ -1,37 +1,31 @@
-import {Controller} from "nodart";
+import { Controller } from "nodart";
 
 export class Sample3Controller extends Controller {
+  init() {
+    console.log("sample3 controller called");
+  }
 
-    init() {
-        console.log('sample3 controller called')
-    }
+  hello() {
+    console.log("hello action called");
+    console.log("current route data:", this.route);
+    console.log("current request headers:", this.http.request.headers);
 
-    hello() {
-        console.log('hello action called')
-        console.log('current route data:', this.route)
-        console.log('current request headers:', this.http.request.headers)
+    this.send.view("index", {
+      title: "Sample3",
+      message:
+        "This controller action has been called directly from HTTP route",
+    });
+  }
 
-        this.send.view('index', {
-            title: 'Sample3',
-            message: 'This controller action has been called directly from HTTP route'
-        })
-    }
+  get(): any {}
 
-    get(): any {
-    }
+  head(): any {}
 
-    head(): any {
-    }
+  patch(): any {}
 
-    patch(): any {
-    }
+  post(): any {}
 
-    post(): any {
-    }
+  put(): any {}
 
-    put(): any {
-    }
-
-    delete(): any {
-    }
+  delete(): any {}
 }

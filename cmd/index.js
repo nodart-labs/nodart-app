@@ -1,25 +1,13 @@
 #!/usr/bin/env node
 
-const {App} = require('nodart')
-
-const app = new App({
-
-    rootDir: require('path').resolve(__dirname, '../src'),
-
-    // INSERT YOUR APPLICATION's CONFIGURATION IN HERE
-
-})
-
-const cmd = app.get('cmd').call()
-
 /***************************************************************************************
 
- CommandLine - Base CLI class
+ Base CLI class: CommandLine
 
  cmd.command -> {
    command: string, -> first argument in command line string.
    action: string,  -> second argument in command line string (OPTIONAL).
-   options: { [key: string]: any } -> Object containing command options with values (default TRUE if value is None).
+   options: object -> Object containing command options with values (default TRUE if value is None).
  }
  cmd.system -> {
    commands() -> List of system commands.
@@ -40,4 +28,24 @@ const cmd = app.get('cmd').call()
 
  *************************************************************************************/
 
-cmd.run()
+const { App } = require("nodart");
+
+const app = new App({
+  rootDir: require("node:path").resolve(__dirname, "../src"),
+
+  // REPLACE THIS SAMPLE WITH YOUR OWN DATABASE CONFIGURATION OPTIONS
+  orm: {
+    client: "better-sqlite3",
+    connection: {
+      filename: require("node:path").resolve(
+        __dirname,
+        "../src/database/sample.sqlite",
+      ),
+    },
+    useNullAsDefault: true,
+  },
+});
+
+const cmd = app.get("cmd").call();
+
+cmd.run();

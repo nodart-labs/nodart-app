@@ -1,29 +1,25 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block main %}
 
-{% block main %}
-
-<h2>
-    {{message | safe}}
-</h2>
+<h2>{{message | safe}}</h2>
 
 {% if args or code %}
 
-<div style="border-radius: 5px; background: #ededed; padding: 10px 40px; margin: 20px 0">
-
-    {% if args %}
-    <code>
-        {{args | dump}}
-    </code>
-    {% endif %}
-
-    {% if code %}
-    <pre>
+<div
+  style="
+    border-radius: 5px;
+    background: #ededed;
+    padding: 10px 40px;
+    margin: 20px 0;
+  "
+>
+  {% if args %}
+  <code>{{args | dump}}</code>
+  {% endif %} {% if code %}
+  <pre>
         {{code | safe}}
-    </pre>
-    {% endif %}
-
+    </pre
+  >
+  {% endif %}
 </div>
 
-{% endif %}
-
-{% endblock %}
+{% endif %} {% endblock %}

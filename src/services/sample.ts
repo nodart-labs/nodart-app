@@ -1,38 +1,34 @@
-import {Service} from "nodart";
+import { Service } from "nodart";
 
 export class SampleService extends Service {
+  get orm() {
+    return this.scope.app.service.db.orm; // or this.scope.app.get('orm').call() as Orm
+  }
 
-    get orm() {
+  test() {
+    const scope = {};
 
-        return this.scope.app.service.db.orm // or this.scope.app.get('orm').call() as Orm
-    }
+    Object.entries(this.scope).forEach(
+      ([entry, data]) => (scope[entry] = data?.constructor),
+    );
 
-    test() {
+    console.log("Sample Service scope:", scope);
 
-        const scope = {}
+    return "OK";
+  }
 
-        Object.entries(this.scope).forEach(([entry, data]) => scope[entry] = data?.constructor)
+  /**
+   * See docs: https://knexjs.org/guide/migrations.html
+   */
+  async testMigration() {
+    const migrator = this.orm.migrator();
 
-        console.log('Sample Service scope:', scope)
+    await migrator.source("sample", ["users"]).up();
 
-        return 'OK'
-    }
+    return "OK";
+  }
 
-    /**
-     * See docs: https://knexjs.org/guide/migrations.html
-     */
-    async testMigration() {
-
-        const migrator = this.orm.migrator()
-
-        await migrator.source('sample', ['users']).up()
-
-        return 'OK'
-    }
-
-    async testModel() {
-
-        return this.scope.model().sub.sample.test()
-    }
-
+  async testModel() {
+    return this.scope.model().sub.sample.test();
+  }
 }
