@@ -14,7 +14,7 @@
     "seed@sources": "npx nodart seed all-source-run"
   },
   "dependencies": {
-    "nodart": "^4.3.3"
+    "nodart": "^4.3.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
