@@ -8,10 +8,13 @@
     "start": "node --loader ts-node/esm src/index.ts",
     "dev": "nodemon src/index.ts",
     "lint": "eslint . --ext .js,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "migrate@sources:up": "npx nodart migrate all-source-up",
+    "migrate@sources:down": "npx nodart migrate all-source-down",
+    "seed@sources": "npx nodart seed all-source-run"
   },
   "dependencies": {
-    "nodart": "^4.3.2"
+    "nodart": "^4.3.3"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
