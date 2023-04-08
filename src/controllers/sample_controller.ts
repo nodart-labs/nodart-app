@@ -32,16 +32,18 @@ export class SampleController extends Controller {
 
     /** ALTERNATE SERVICE CALL:
 
-       this.app.get("service").call([
-         {
-            app: this.app,
-            controller: () => this,
-            http: this.http,
-            route: this.route,
-          },
-       ]);
-
-     */
+    this.app.get("service").call(
+      [
+        {
+          app: this.app,
+          controller: () => this,
+          http: this.http,
+          route: this.route,
+        },
+      ],
+      "sample",
+    );
+    */
 
     console.log("Service test status:", service.test());
 
