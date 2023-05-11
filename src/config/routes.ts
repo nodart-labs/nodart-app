@@ -63,4 +63,11 @@ export = <nodart.router.RouteEntry>{
   ],
   sample: "sample",
   sample2: ["/:foo/:+id?"],
+  sample3: ["/var/var/:+id/var/:+id2"],
+  action: [
+    {
+      path: "/action",
+      action: "test",
+    },
+  ],
 };

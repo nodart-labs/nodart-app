@@ -1,8 +1,8 @@
 import { Controller } from "nodart";
 
-export class Sample3Controller extends Controller {
+export class Sample4Controller extends Controller {
   init() {
-    console.log("sample3 controller called");
+    console.log("sample4 controller called");
   }
 
   hello() {
@@ -11,7 +11,7 @@ export class Sample3Controller extends Controller {
     console.log("current request headers:", this.http.request.headers);
 
     this.send.view("index", {
-      title: "Sample3",
+      title: "Sample4",
       message:
         "This controller action has been called directly from HTTP route",
     });
