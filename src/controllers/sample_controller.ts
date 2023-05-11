@@ -49,12 +49,6 @@ export class SampleController extends Controller {
 
     console.log("-----------");
 
-    console.log("Testing Migrations:");
-
-    console.log("Migrations test status:", await service.testMigration());
-
-    console.log("-----------");
-
     console.log("Testing Model:");
 
     console.log("Model test status:", await service.testModel());

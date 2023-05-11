@@ -17,17 +17,6 @@ export class SampleService extends Service {
     return "OK";
   }
 
-  /**
-   * See docs: https://knexjs.org/guide/migrations.html
-   */
-  async testMigration() {
-    const migrator = this.orm.migrator();
-
-    await migrator.source("sample", ["users"]).up();
-
-    return "OK";
-  }
-
   async testModel() {
     return this.scope.model().sub.sample.test();
   }
