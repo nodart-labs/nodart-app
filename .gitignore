@@ -57,6 +57,7 @@ Thumbs.db
 .history
 
 *.sqlite
+!/src/database/sample.sqlite
 
 package-lock.json
 yarn.lock
