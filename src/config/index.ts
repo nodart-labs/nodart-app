@@ -23,4 +23,18 @@ export = <nodart.app.AppConfigInterface>Object.freeze({
     // This option provides template for view data from Exception. (under the "views" folder)
     // template: 'exception' // or (response: nodart.http.HttpResponseDataInterface) => 'string/path'
   },
+  logger: {
+    // Error Logging
+    options: {
+      error: {
+        useLogging: false, // Disabled by default
+        // filename: "", // errors logging filename: "error.log" by default
+        // directory: "" // absolute path to logging directory: "{project_directory}/logs" by default
+      },
+      onHttp: {
+        statuses: [500], // select under which http response code statuses the logging will be executed
+        excludeStatuses: [], // select under which http response code statuses the logging will be skipped
+      },
+    },
+  },
 });
